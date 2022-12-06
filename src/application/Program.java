@@ -1,10 +1,8 @@
 package application;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +11,9 @@ import entities.Elves;
 
 public class Program {
 
-	public static void main(String[] args) throws FileNotFoundException, IOException {
+	public static void main(String[] args){
+		
+		//Challenge: https://adventofcode.com/2022/day/1
 
 		File file = new File("input.txt");
 		String lineValue;
@@ -37,27 +37,22 @@ public class Program {
 			Collections.sort(list);
 
 			sc.close();
-			
-			double top3=0;
-			
-			for (int i=0; i<3;i++) {
+
+			int top3 = 0;
+
+			for (int i = 0; i < 3; i++) {
 				System.out.println(list.get(i));
 				top3 += list.get(i).getCallories();
 			}
-			
+
 			System.out.println();
 			System.out.println("Carrying most calories: " + list.get(0));
 			System.out.println();
 			System.out.println("Calories carried by top 3: " + top3 + " callories.");
-			
-			
-			
-			
-			
-			
 
-		} catch (FileNotFoundException e) {
-
+		} catch (IOException e) {
+			System.out.println("File not found");
+			e.printStackTrace();
 		}
 
 	}
